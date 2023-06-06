@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <deque>
+
+using namespace std;
+
+
+int main()
+{
+    int n; string str = ""; deque<char> data; cin >> n;
+
+    int nu; // 그냥 변수
+    char C;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> nu;
+        if (nu == 1)
+        {
+            str += "T";
+            cin >> C;
+            data.push_back(C);
+        }
+        else if (nu == 2)
+        {
+            str += "F";
+            cin >> C;
+            data.push_front(C);
+        }
+        else if (nu == 3)
+        {
+            if (data.size() != 0)
+            {
+                if (str[str.size() - 1] == 'T')
+                {
+                    data.pop_back();
+                    str.pop_back();
+                }
+                else if (str[str.size() - 1] == 'F')
+                {
+                    data.pop_front();
+                    str.pop_back();
+                }
+            }
+        }
+    }
+
+    if (data.size() == 0) cout << 0;
+    else 
+    { 
+        int Size = data.size();  
+        for (int i = 0; i < Size; i++) cout << data[i]; 
+    }
+
+    return 0;
+}
