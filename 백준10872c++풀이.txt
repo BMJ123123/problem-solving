@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+
+long long factorial(long long sum)
+{
+    if (sum <= 1) return 1;   //종료조건, 최종값
+    return sum * factorial(sum - 1);
+}
+
+int main()
+{
+    long long N; cin >> N; cout << factorial(N);
+    return 0;
+}
