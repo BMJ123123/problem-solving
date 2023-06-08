@@ -1,0 +1,35 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int sum = 0;
+
+int grid(int T, int i, vector<int> v) {
+    int coin = v[i];
+    while (T - coin >= 0) {
+        T -= coin;
+        sum++;
+    }
+
+    return T;
+}
+
+int main()
+{
+    vector<int> v; int N, k; cin >> N >> k;
+    int coin;
+    for (int i = 0; i <N; i++)
+    {
+        cin >> coin;
+        v.push_back(coin);
+    } 
+    sort(v.rbegin(), v.rend());
+    
+    for (int i = 0; i < N; i++)
+    {
+        k = grid(k, i, v);
+    }
+
+    cout << sum;
+    return 0;
+}
