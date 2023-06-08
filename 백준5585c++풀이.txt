@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+int sum = 0;
+
+int oback(int zandon)
+{
+    while (zandon - 500 >= 0) {
+        zandon -= 500;
+        sum++;
+    }
+    return zandon;
+}
+
+int back(int zandon)
+{
+    while (zandon - 100 >= 0) {
+        zandon -= 100;
+        sum++;
+    }
+    return zandon;
+}
+
+int oship(int zandon)
+{
+    while (zandon - 50 >= 0) {
+        zandon -= 50;
+        sum++;
+    }
+    return zandon;
+}
+
+int ship(int zandon)
+{
+    while (zandon - 10 >= 0) {
+        zandon -= 10;
+        sum++;
+    }
+    return zandon;
+}
+
+int o(int zandon)
+{
+    while (zandon - 5 >= 0) {
+        zandon -= 5;
+        sum++;
+    }
+    return zandon;
+}
+
+int ill(int zandon)
+{
+    while (zandon - 1 >= 0) {
+        zandon -= 1;
+        sum++;
+    }
+    return zandon;
+}
+
+int main()
+{
+    int enn, zandon=1000; cin >> enn; zandon -= enn;
+    zandon = oback(zandon);
+    zandon = back(zandon);
+    zandon = oship(zandon);
+    zandon = ship(zandon);
+    zandon = o(zandon);
+    zandon = ill(zandon);
+
+    cout << sum;
+    return 0;
+}
