@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+ 
+int factorial(int sum)
+{
+    if(sum == 0) return 0;   //종료조건, 최종값
+    else if (sum == 1) return 1; //
+    return factorial(sum-1) + factorial(sum-2);
+}
+
+int main()
+{
+    int N; cin >> N; cout << factorial(N);
+    return 0;
+}
