@@ -1,0 +1,32 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main() {
+    long long damage, N; string other; vector<string> v; cin >> N; cin >> damage;
+    for (int i = 0; i < N - 1; i++) {
+        cin >> other;
+        v.push_back(other);
+    }
+
+    int sum = 1, val;  int vsize = v.size();
+    while (sum) {
+        sum = 0;
+
+        for (int i = 0; i < vsize; i++) {
+            if (v[i] != ".") val = stoi(v[i]);
+            else continue;
+            if (damage > val) { v[i] = "."; damage += val; sum++; }
+        }
+    }
+
+    bool True = true;
+    for (int i = 0; i < vsize; i++) {
+        if (v[i] == ".") True = true;
+        else { True = false; break; }
+    }
+    if (True) cout << "Yes";
+    else cout << "No";
+    return 0;
+}
