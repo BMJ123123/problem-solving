@@ -1,0 +1,41 @@
+#include<iostream>
+#include <string>
+#include<vector>
+#include <algorithm>
+using namespace std;
+
+int LOVE(char spelling, string str) {
+    int sum = 0;
+    while (str.find(spelling) != string::npos) {
+        str[str.find(spelling)] = '.';
+        sum++;
+    }
+    return sum;
+}
+
+
+int main() {
+    vector<int> numpy(4, 0), love; vector<int> percent; vector<string> team; string spelling = "LOVE", str; 
+    int N; cin >> str >> N;
+    for (int i = 0; i < 4; i++) love.push_back(LOVE(spelling[i], str)); //연두 이름에 들어간 러브 숫자
+    for (int i = 0; i < N; i++) { cin >> str; team.push_back(str); } // 각 팀 입력
+
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < 4; j++) numpy[j] = LOVE(spelling[j], team[i]); // 각 팀에 들어간 러브 숫자 넌파이백터에 넣기. (인덱스값이 같음)
+        percent.push_back( ((love[0]+ love[1] + numpy[0] + numpy[1]) * (love[0]+ love[2] + numpy[0] + numpy[2]) * (love[0] + love[3] + numpy[0] + numpy[3]) * (love[1] +love[2]+numpy[1] + numpy[2]) * (love[1]+love[3]+numpy[1] + numpy[3]) * (love[2]+love[3]+ numpy[2] + numpy[3])) % 100);
+    }
+    
+
+    int Max = percent[0]; vector<string> dictionary; dictionary.push_back(team[0]);
+    for (int i = 1; i < N; i++) {
+        if (Max < percent[i]) { dictionary.clear(); dictionary.push_back(team[i]); Max = percent[i]; }
+        else if (Max == percent[i]) dictionary.push_back(team[i]);
+    }
+
+
+    sort(dictionary.begin(), dictionary.end());
+    cout << dictionary[0];
+
+    return 0;
+}
