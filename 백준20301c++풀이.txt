@@ -1,0 +1,35 @@
+#include<iostream>
+#include<deque>
+using namespace std;
+
+int sum = 0;
+
+
+int main() {
+    deque<int> d; bool True = true; int N, K, M, sum=0; cin >> N >> K >> M;
+    for (int i = 1; i < N+1; i++) d.push_back(i);
+
+    for (int i = 0; i < N; i++) {
+        if (True) {
+            for (int j = 0; j < K-1; j++) { d.push_back(d.front()); d.pop_front(); }
+            cout << d.front() << "\n";
+            d.pop_front();
+        }
+        else {
+            for (int j = 0; j < K-1; j++) { d.push_front(d.back()); d.pop_back(); }
+            cout << d.back() << "\n";
+            d.pop_back();
+        }
+
+        if (True) {
+            sum++;
+            if (sum == M) { sum = 0;  True = false; }
+        }
+        else {
+            sum++;
+            if (sum == M) { sum = 0; True = true; }
+        }
+    }
+
+    return 0;
+}
