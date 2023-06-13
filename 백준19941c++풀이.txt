@@ -1,0 +1,44 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+
+
+int main() {
+    int desk, k, sum = 0; string str; cin >> desk >> k >> str;
+
+
+    while (str.find('P') != string::npos) {
+        int P = str.find('P');
+        // 왼쪽으로 탐색
+        for (int i = k; i >= 1; i--) {
+            if (!(P - i < 0)) {
+                if (str[P - i] == 'H') { 
+                    sum++; 
+                    str[P - i] = '.'; 
+                    str[P] = '.'; 
+                    break; 
+                }
+            }
+        }
+        // 오른쪽으로 탐색
+        if (!(str[P] == '.')) {
+            for (int i = 1; i <= k; i++) {
+                if (!(P + i >= str.size())) {
+                    if(str[P+i] == 'H') { 
+                        sum++; 
+                        str[P + i] = '.'; 
+                        str[P] = '.';
+                        break; 
+                    }
+                }
+            }
+        }
+        str[P] = '.';
+    }
+    
+
+    cout << sum;
+    return 0;
+}
