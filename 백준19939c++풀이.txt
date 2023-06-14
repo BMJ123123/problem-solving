@@ -1,0 +1,25 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+
+int main() {
+    vector<int> v; int ball, team, Min=0; cin >> ball >> team;
+    for (int i = 1; i <= team; i++) Min+=i;
+    for (int i = 1; i <= team; i++) v.push_back(i);
+    
+    
+    int sum = team - 1;
+    if (Min <= ball) {
+        ball -= Min;
+        if (ball != 0) {
+            if (ball % team != 0) sum = team;
+        }
+        cout << sum;
+    }
+    else cout << -1;
+
+
+    return 0;
+}
